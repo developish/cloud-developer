@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - name: install dependencies
+    apt: name={{item}} state=present
+    become: yes
+    with_items:
+    - git-core
+    - zlib1g-dev
+    - build-essential
+    - libssl-dev
+    - libreadline-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - libxml2-dev
+    - libxslt1-dev
+    - libcurl4-openssl-dev
+    - python-software-properties
+    - libffi-dev
+
+  - name: Install rbenv
+    git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
+
+  - name: Install ruby-build
+    git: repo=https://github.com/rbenv/ruby-build.git dest=~/.rbenv/plugins/ruby-build
