@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+  - name: install git
+    apt: name=git-core state=present
+
+  - name: install tmux
+    apt: name=tmux state=present
+
+  - name: install build essential
+    apt: name=build-essential state=present
