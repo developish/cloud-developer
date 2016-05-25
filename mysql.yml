@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - name: install dependencies
+    apt: name={{item}} state=present
+    become: yes
+    with_items:
+    - mysql-server
+    - mysql-client
+    - libmysqlclient-dev
